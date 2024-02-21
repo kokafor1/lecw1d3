@@ -1,31 +1,36 @@
-* {
-    margin: 0;
-}
 
-body {
-    background-color: salmon;
-}
-
-
-.grid-container {
+.container {
     min-height: 100vh;
     display: grid;
-    grid-template-columns: 10vw 1fr 2fr 10vw;
+    grid-template-columns: repeat(6, 1fr);
     grid-template-rows: 10vh 40vh 1fr;
+    gap: 3vh 1vw;
+    grid-auto-flow: row;
     grid-template-areas:
-    "nav nav nav nav"
-    ". prof-pic prof-post ."
-    ". posts posts .";
-    row-gap: vh;
+    "nav nav nav nav nav nav"
+    ". prof-pic prof-info prof-info prof-info ."
+    ". posts posts posts posts .";
 }
 
-.area-border {
-    border: 2px solid black;
+@media (min-width: 992px) {
+    .container {
+        min-height: 100vh;
+        display: grid;
+        grid-template-columns: 1fr 3fr 5fr 1fr;
+        grid-template-rows: 10vh 40vh 40vh 1fr;
+        gap: 3vh 1vw;
+        grid-auto-flow: row;
+        grid-template-areas:
+        "nav nav nav nav"
+        ". prof-pic prof-info ."
+        " .posts posts .";
+    }
 }
+
 
 .nav {
     grid-area: nav;
-    background-color: cornflowerblue;
+    background-color: black;
     position: sticky;
     top: 0;
 }
@@ -34,7 +39,7 @@ body {
     height: 100%;
     display: flex;
     justify-content: space-evenly;
-    align-items: center;
+    align-items: center
 }
 
 .nav-links > a {
@@ -43,18 +48,68 @@ body {
 }
 
 .nav-links > a:hover {
-    font-size: larger;
     text-decoration: underline;
 }
 
 .prof-pic {
     grid-area: prof-pic;
+    justify-self: center;
+    align-self: center;
+    height: 100%;
 }
 
-.prof-post {
-    grid-area: prof-post;
+.img-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#prof-img {
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.prof-info {
+    grid-area: prof-info;
+
+}
+
+.contact {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.info-container {
+    max-width: 75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .posts {
     grid-area: posts;
+}
+
+.post-card {
+    border: 1px solid black;
+    padding: 1em;
+    border-radius: 25px;
+    margin: 2vh 0;
+}
+
+.card-links {
+    display: flex;
+    justify-content: space-around;
+}
+
+.card-links > a {
+    color: black;
+    text-decoration: none;
+}
+
+.card-links > a:hover {
+    background-color: dodgerblue;
+    text-decoration: underline;
 }
